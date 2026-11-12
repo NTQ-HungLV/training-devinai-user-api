@@ -36,7 +36,8 @@ public class UserService {
     }
 
     public User update(Long id, User changes) {
-        User existing = repository.findById(id).get();
+        User existing = repository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
         existing.setFullName(changes.getFullName());
         existing.setEmail(changes.getEmail());
         return repository.save(existing);
