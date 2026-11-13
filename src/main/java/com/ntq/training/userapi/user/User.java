@@ -1,5 +1,7 @@
 package com.ntq.training.userapi.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * A user account managed by the API.
  * The API accepts and returns this object as JSON.
@@ -10,6 +12,7 @@ public class User {
     private String username;
     private String fullName;
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     public User() {
